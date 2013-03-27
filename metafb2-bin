@@ -1,0 +1,54 @@
+#!/usr/bin/env python2.7
+
+from optparse import OptionParser
+import sys
+import metafb2.project 
+import metafb2.markup 
+from sys import exit
+from metafb2.print_ext import print_err
+
+
+ABOUT = "metafb2: FictionBook2 files generator"
+CMDHELP = '''Usage: %s <OPTIONS> <COMMAND> <CMD-OPTIONS>
+where <COMMAND> is one of:
+    compile (or co)     - generate FictionBook2 file from the metafb2 project
+    init                - generate project skeleton
+<OPTIONS> are:
+    --help              - display help (this screen)
+    --version           - display version'''
+
+COMMANDS = ["compile", "init"]
+ALT_COMMANDS = {'co': "compile"}
+
+if len(sys.argv) == 1 or sys.argv[1] == "--help":
+    # print commands help
+    print(ABOUT)
+    print(CMDHELP % (sys.argv[0],))
+    exit(0)
+    
+command = sys.argv[1]
+if command in ALT_COMMANDS:
+    command = ALT_COMMANDS[command]
+
+if command not in COMMANDS:
+    print_err("Unknown command `%s'" % command)
+    exit(1)
+    
+cmd_argv = sys.argv[2:]
+
+module = None
+if command == "compile":
+    import metafb2.cmd_compile as cmd_compile
+    module = cmd_compile
+elif command == "init":
+    import metafb2.cmd_init as cmd_init
+    module = cmd_init
+
+try:    
+    module.action(cmd_argv)
+except metafb2.project.InvalidProjectError, e:
+    print_err(e)
+    exit(1)
+except metafb2.markup.InvalidMarkupError, e:
+    print_err(e.message)
+    exit(1)

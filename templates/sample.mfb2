@@ -1,0 +1,76 @@
+[Project]
+# name of the file with main content
+content-file = content.txt
+# path to directory with pictures
+#images-path = ./images
+# name of the file with notes/references
+#notes-file = notes.txt
+# name of the file with annotation
+annotation-file = annotation.txt
+# book title
+book-title = Book Title
+# list of genres, comma separated
+genres = sf,child_det
+# book language
+#lang = ru
+# source book language
+#src-lang = en
+# name of used software
+program-used = metafb2
+# name of the cover page picture
+#cover-image = cover.png
+
+# book file identifier
+book-id = %(uuid)s
+# Date this book was written
+#date = 1988-01-01
+# book file version
+book-version = 1.0
+# book document creation date
+doc-date = %(doc_date)s
+
+# Author of the original (online) document, if this is a conversion
+#src-ocr = UUUU
+
+# Original (paper) book name
+#book-name = 
+# name of the publisher
+#publisher = 
+# City of the publisher
+#publish-city = 
+# book publication year
+#publish-year = 
+# paper book ISBN
+#publish-isbn = ISBN-XXXX
+
+#[Sequence/1]
+#name = sequence (series) name
+#number = book position in the series
+
+# Changelog
+[History]
+1.0 = initial version
+
+[Author/1]
+first-name = Name
+middle-name = Middle name
+last-name = Last name
+nickname = nickname
+email = name@example.com
+
+
+# book translator
+[Translator/1]
+first-name = Name
+middle-name = Middle name
+last-name = Last name
+nickname = nickname
+email = name@example.com
+
+# Document author
+[DocAuthor/1]
+first-name = Name
+middle-name = Middle name
+last-name = Last name
+nickname = nickname
+email = name@example.com
